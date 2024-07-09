@@ -1,11 +1,22 @@
-import { useState } from 'react'
 import './App.css'
+import {Route, Routes} from "react-router-dom";
+import routes from "./templates/routes/routes.js";
 
 const App = () => {
   return (
-    <>
+      <div>
+        <Routes>
 
-    </>
+          {routes.map(route => {
+            const Page = route.element;
+
+            return (
+                <Route key={route.path} path={route.path} element={<Page />} />
+            )
+          })}
+
+        </Routes>
+      </div>
   )
 }
 
