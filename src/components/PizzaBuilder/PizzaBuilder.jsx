@@ -6,10 +6,21 @@ const PizzaBuilder = ({setPrice, route}) => {
 
     const {pricesForSize, pricesForThickness, maxNumberOfToppings, priceForEachTopping, additionalToppings} = route;
 
-    const [pizzaSize, setPizzaSize] = useState('');
+    const [pizzaSize, setPizzaSize] = useState("");
 
     const handleRadio = (event) => {
         setPizzaSize(event.target.id);
+    }
+
+
+    const [dough, setDough] = useState("");
+
+    const handleSelect = (event) => {
+        if (event.target.value === "Hamur Kalınlığı")
+            setDough("");
+
+        setDough(event.target.value)
+
     }
 
     return (
@@ -65,7 +76,18 @@ const PizzaBuilder = ({setPrice, route}) => {
                 </div>
 
                 <div>
+                    <Form>
+                        <legend>
+                        <span>Hamur Seç <span>*</span></span>
+                        </legend>
 
+                        <Input type="select" name="hamur" id="hamur" onChange={handleSelect}>
+                            <option>Hamur Kalınlığı</option>
+                            <option>İnce</option>
+                            <option>Kalın</option>
+                        </Input>
+
+                    </Form>
                 </div>
             </div>
         </div>
