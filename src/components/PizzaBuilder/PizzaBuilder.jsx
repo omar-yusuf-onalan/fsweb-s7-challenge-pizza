@@ -28,8 +28,6 @@ const PizzaBuilder = ({setPizza, route}) => {
                 newPizza.malzemeler = newPizza.malzemeler.filter(topping => topping !== event.target.value);
             }
 
-            console.log(newPizza);
-
             return newPizza;
         })
 
