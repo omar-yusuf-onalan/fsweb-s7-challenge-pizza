@@ -1,4 +1,5 @@
 import styles from './OrderPizza.module.css';
+import React from "react";
 
 const OrderPizza = () => {
     return (
