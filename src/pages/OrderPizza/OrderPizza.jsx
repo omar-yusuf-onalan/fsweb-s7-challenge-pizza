@@ -7,13 +7,23 @@ import orderPizzaRoute from "../../templates/routes/orderPizzaRoute.js";
 
 const OrderPizza = () => {
 
-    const [price, setPrice] = useState(0);
+    const defaultPizza = {
+        isim: "",
+        boyut: "",
+        hamur: "",
+        malzemeler: [],
+        siparisNotu: "",
+        adet: 1,
+        singularPrice: 85.50
+    }
+
+    const [pizza, setPizza] = useState(defaultPizza);
 
     return (
         <div>
             <Header />
-            <PizzaBuilder setPrice={setPrice} route={orderPizzaRoute}/>
-            <TotalPrice price={price} />
+            <PizzaBuilder setPizza={setPizza} route={orderPizzaRoute}/>
+            <TotalPrice pizza={pizza} />
         </div>
     )
 }

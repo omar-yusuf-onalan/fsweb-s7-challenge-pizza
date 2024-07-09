@@ -1,25 +1,38 @@
 import styles from './PizzaBuilder.module.css';
 import {Form, FormGroup, Input, Label} from "reactstrap";
-import {useState} from "react";
 
-const PizzaBuilder = ({setPrice, route}) => {
+const PizzaBuilder = ({setPizza, route}) => {
 
     const {pricesForSize, pricesForThickness, maxNumberOfToppings, priceForEachTopping, additionalToppings} = route;
 
-    const [pizzaSize, setPizzaSize] = useState("");
-
     const handleRadio = (event) => {
-        setPizzaSize(event.target.id);
+        setPizza(pizza => ({...pizza, [event.target.name]: event.target.id}));
     }
 
-
-    const [dough, setDough] = useState("");
-
     const handleSelect = (event) => {
-        if (event.target.value === "Hamur Kalınlığı")
-            setDough("");
 
-        setDough(event.target.value)
+        if (event.target.value === "Hamur Kalınlığı")
+            setPizza(pizza => ({...pizza, [event.target.name]: ""}));
+
+        setPizza(pizza => ({...pizza, [event.target.name]: event.target.value}));
+
+    }
+
+    const handleCheckbox = (event) => {
+        setPizza(pizza => {
+            const newPizza = {...pizza};
+
+            if (event.target.checked) {
+                newPizza.malzemeler.push(event.target.value)
+            } else {
+                newPizza.malzemeler = newPizza.malzemeler.filter(topping => topping !== event.target.value);
+            }
+
+            console.log(newPizza);
+
+            return newPizza;
+        })
+
 
     }
 
@@ -28,7 +41,7 @@ const PizzaBuilder = ({setPrice, route}) => {
             <p>Position Absolute Acı Pizza</p>
 
             <div>
-                <span>85.50tl</span>
+                <span>85.50₺</span>
 
                 <div>
                     <span>4.9</span>
@@ -54,20 +67,20 @@ const PizzaBuilder = ({setPrice, route}) => {
                         </legend>
 
                         <FormGroup check>
-                            <Input id="kucuk" name="pizza-size" type="radio" onChange={handleRadio}/>
+                            <Input id="kucuk" name="boyut" type="radio" onChange={handleRadio}/>
                             {' '}
                             <Label check>Küçük</Label>
                         </FormGroup>
 
                         <FormGroup>
-                            <Input id="orta" name="pizza-size" type="radio" onChange={handleRadio}/>
+                            <Input id="orta" name="boyut" type="radio" onChange={handleRadio}/>
                             {' '}
                             <Label check>Orta</Label>
 
                         </FormGroup>
 
                         <FormGroup>
-                            <Input id="buyuk" name="pizza-size" type="radio" onChange={handleRadio}/>
+                            <Input id="buyuk" name="boyut" type="radio" onChange={handleRadio}/>
                             {' '}
                             <Label check>Büyük</Label>
                         </FormGroup>
@@ -89,6 +102,26 @@ const PizzaBuilder = ({setPrice, route}) => {
 
                     </Form>
                 </div>
+            </div>
+
+            <div>
+
+                <h3>Ek Malzemeler</h3>
+                <p>En Fazla {maxNumberOfToppings} malzeme seçebilirsiniz. {priceForEachTopping}₺</p>
+
+                <Form onChange={handleCheckbox}>
+                    {additionalToppings.map(topping => {
+                        return (
+                            <FormGroup key={topping} check>
+                                <Input type="checkbox" value={topping}/>
+
+                                <Label check>
+                                    {topping}
+                                </Label>
+                            </FormGroup>
+                        )
+                    })}
+                </Form>
             </div>
         </div>
     )
