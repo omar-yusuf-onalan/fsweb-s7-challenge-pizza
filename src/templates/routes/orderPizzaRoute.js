@@ -3,12 +3,12 @@ import OrderPizza from "../../pages/OrderPizza/OrderPizza.jsx";
 const orderPizzaRoute = {
     path: "/order-pizza",
     element: OrderPizza,
-    priceForSize: {
+    pricesForSize: {
         kucuk: 20,
         orta: 40,
         buyuk: 60
     },
-    priceForThickness: {
+    pricesForThickness: {
         ince: 20,
         kalin: 40
     },
