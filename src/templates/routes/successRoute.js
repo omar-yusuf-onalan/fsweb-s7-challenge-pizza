@@ -1,7 +1,7 @@
 import Success from "../../pages/Success/Success.jsx";
 
 const successRoute = {
-    path: '/success',
+    path: "/success",
     element: Success
 }
 
