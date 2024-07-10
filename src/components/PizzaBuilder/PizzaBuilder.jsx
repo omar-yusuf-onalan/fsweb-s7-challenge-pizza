@@ -38,84 +38,94 @@ const PizzaBuilder = ({setPizza, route}) => {
     }
 
     return (
-        <div>
-            <Description />
+        <div className={styles.pizzaBuilder}>
+            <div className={styles.gapsBetweenElements}>
+                <Description />
 
-            <div>
+                <div className={`${styles.hundredPercentWidth} ${styles.doughAndThickness}`}>
 
-                <Form>
+                    <Form >
 
-                    <legend>
-                        <span>Boyut Seç <span>*</span></span>
-                    </legend>
+                        <legend>
+                            <span>Boyut Seç <span>*</span></span>
+                        </legend>
 
-                    <FormGroup>
-                        <Input id="kucuk" name="boyut" type="radio" onChange={handleRadio}/>
-                        {' '}
-                        <Label check>Küçük</Label>
-                    </FormGroup>
+                        <FormGroup>
+                            <Input id="kucuk" name="boyut" type="radio" onChange={handleRadio}/>
+                            {' '}
+                            <Label check>Küçük</Label>
+                        </FormGroup>
 
-                    <FormGroup>
-                        <Input id="orta" name="boyut" type="radio" onChange={handleRadio}/>
-                        {' '}
-                        <Label check>Orta</Label>
+                        <FormGroup>
+                            <Input id="orta" name="boyut" type="radio" onChange={handleRadio}/>
+                            {' '}
+                            <Label check>Orta</Label>
 
-                    </FormGroup>
+                        </FormGroup>
 
-                    <FormGroup>
-                        <Input id="buyuk" name="boyut" type="radio" onChange={handleRadio}/>
-                        {' '}
-                        <Label check>Büyük</Label>
-                    </FormGroup>
+                        <FormGroup>
+                            <Input id="buyuk" name="boyut" type="radio" onChange={handleRadio}/>
+                            {' '}
+                            <Label check>Büyük</Label>
+                        </FormGroup>
 
-                </Form>
+                    </Form>
 
-                <Form>
-                    <legend>
-                    <span>Hamur Seç <span>*</span></span>
-                    </legend>
+                    <Form>
+                        <legend>
+                            <span>Hamur Seç <span>*</span></span>
+                        </legend>
 
-                    <Input type="select" name="hamur" id="hamur" onChange={handleSelect}>
-                        <option value="hamur-kalinligi">Hamur Kalınlığı</option>
-                        <option value="ince">İnce</option>
-                        <option value="kalin">Kalın</option>
-                    </Input>
+                        <Input type="select" name="hamur" id="hamur" onChange={handleSelect}>
+                            <option value="hamur-kalinligi">Hamur Kalınlığı</option>
+                            <option value="ince">İnce</option>
+                            <option value="kalin">Kalın</option>
+                        </Input>
 
-                </Form>
+                    </Form>
+                </div>
+
+                <div className={`${styles.hundredPercentWidth} ${styles.toppings}`}>
+
+                    <div>
+                        <h3>Ek Malzemeler</h3>
+                        <p>En Fazla {maxNumberOfToppings} malzeme seçebilirsiniz. {priceForEachTopping}₺</p>
+                    </div>
+
+                    <Form className={styles.toppingsWrap} onChange={handleCheckbox}>
+                        {additionalToppings.map(topping => {
+                            return (
+                                <FormGroup key={topping} className={styles.formGroup}>
+                                    <Input type="checkbox" value={topping}/>
+                                    {" "}
+                                    <Label>
+                                        {topping}
+                                    </Label>
+                                </FormGroup>
+                            )
+                        })}
+                    </Form>
+                </div>
+
+                <div className={`${styles.hundredPercentWidth} ${styles.inputs}`}>
+
+                    <Form>
+                        <Label>İsim</Label>
+                        <br/>
+                        <br/>
+                        <Input placeholder="Lütfen isminizi giriniz" name="isim" type="text" onChange={handleInput}/>
+                    </Form>
+                    <br/>
+                    <Form>
+                        <Label>Sipariş Notu</Label>
+                        <br/>
+                        <br/>
+                        <Input placeholder="Siparişine eklemek istediğin bir not var mı?" name="siparisNotu" type="text"
+                               onChange={handleInput}/>
+                    </Form>
+
+                </div>
             </div>
-
-            <div>
-
-                <h3>Ek Malzemeler</h3>
-                <p>En Fazla {maxNumberOfToppings} malzeme seçebilirsiniz. {priceForEachTopping}₺</p>
-
-                <Form onChange={handleCheckbox}>
-                    {additionalToppings.map(topping => {
-                        return (
-                            <FormGroup key={topping} check>
-                                <Input type="checkbox" value={topping}/>
-
-                                <Label>
-                                    {topping}
-                                </Label>
-                            </FormGroup>
-                        )
-                    })}
-                </Form>
-            </div>
-
-            <Form>
-                <Label>İsim</Label>
-                <br/>
-                <Input name="isim" type="text" onChange={handleInput}/>
-            </Form>
-
-            <Form>
-                <Label>Sipariş Notu</Label>
-                <br/>
-                <Input name="siparisNotu" type="text" onChange={handleInput}/>
-            </Form>
-
         </div>
     )
 }
