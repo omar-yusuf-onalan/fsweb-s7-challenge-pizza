@@ -9,7 +9,7 @@ const Success = () => {
 
             <div className={styles.caption}>
                 <p>TEBRIKLER!</p>
-                <p>SİPARİŞİNİZ ALINDI!</p>
+                <p><span>SİPARİŞİNİZ</span> <span>ALINDI!</span></p>
             </div>
 
         </div>
