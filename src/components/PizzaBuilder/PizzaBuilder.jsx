@@ -164,11 +164,12 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                                 >
                                     <Input
                                         type="checkbox"
+                                        id={topping}
                                         value={topping}
                                         checked={pizza.malzemeler.includes(topping)}
                                     />
                                     {" "}
-                                    <Label>
+                                    <Label htmlFor={topping}>
                                         {topping}
                                     </Label>
                                 </FormGroup>
