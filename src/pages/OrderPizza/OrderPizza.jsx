@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header.jsx";
 import PizzaBuilder from "../../components/PizzaBuilder/PizzaBuilder.jsx";
 import TotalPrice from "../../components/TotalPrice/TotalPrice.jsx";
 import orderPizzaRoute from "../../templates/routes/orderPizzaRoute.js";
+import Separator from "../../components/Separator/Separator.jsx";
 
 const OrderPizza = () => {
 
@@ -26,6 +27,7 @@ const OrderPizza = () => {
 
             <div className={styles.pizzaBuilderAndTotalPrice}>
                 <PizzaBuilder setPizza={setPizza} route={orderPizzaRoute}/>
+                <Separator />
                 <TotalPrice pizza={pizza} setPizza={setPizza} route={orderPizzaRoute}/>
             </div>
 
