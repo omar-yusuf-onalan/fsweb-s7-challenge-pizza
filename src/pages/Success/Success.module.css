@@ -23,3 +23,11 @@
 
 }
 
+@media only screen and (max-width: 480px) {
+    .caption p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
