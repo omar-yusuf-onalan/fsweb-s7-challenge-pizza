@@ -2,7 +2,7 @@ import styles from './TotalPrice.module.css';
 import axios from "axios";
 import {useEffect} from "react";
 
-const TotalPrice = ({pizza, setPizza, route}) => {
+const TotalPrice = ({pizza, setPizza, route, isValid}) => {
     const {pricesForSize, pricesForThickness, priceForEachTopping} = route;
 
     useEffect(() => {
@@ -56,7 +56,7 @@ const TotalPrice = ({pizza, setPizza, route}) => {
                 </section>
 
                 <button
-                    disabled={pizza.boyut === "" || !(pizza.hamur === "ince" || pizza.hamur === "kalin") || pizza.malzemeler.length > 10} onClick={handleOrder}>SİPARİŞ VER</button>
+                    disabled={!isValid} onClick={handleOrder}>SİPARİŞ VER</button>
 
             </div>
         </div>
