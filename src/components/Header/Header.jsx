@@ -4,18 +4,18 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div>
-            <div>
-                <Logo />
+        <div className={styles.header}>
 
-                <div>
-                    <Link to="/">Anasayfa</Link>
-                    -
-                    <Link>Seçenekler</Link>
-                    -
-                    <Link to="order-pizza">Sipariş Oluştur</Link>
-                </div>
+            <Logo />
+
+            <div className={styles.links}>
+                <Link className={styles.link} to="/">Anasayfa</Link>
+                {" "}
+                -
+                {" "}
+                <Link className={styles.link} to="order-pizza">Sipariş Oluştur</Link>
             </div>
+
         </div>
     )
 }
