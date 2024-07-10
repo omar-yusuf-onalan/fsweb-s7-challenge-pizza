@@ -30,8 +30,6 @@ const PizzaBuilder = ({setPizza, route}) => {
 
             return newPizza;
         })
-
-
     }
 
     return (
