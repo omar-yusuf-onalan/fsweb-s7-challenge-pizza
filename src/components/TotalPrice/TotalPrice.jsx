@@ -37,22 +37,26 @@ const TotalPrice = ({pizza, setPizza, route}) => {
     }
 
     return (
-        <div>
-            <div>
+        <div className={styles.totalPrice}>
+
+            <div className={styles.number}>
                 <button disabled={pizza.adet === 1} onClick={handleDecrement}>-</button>
-                {pizza.adet}
+                <span>{pizza.adet}</span>
                 <button onClick={handleIncrement}>+</button>
             </div>
 
-            <div>
+            <div className={styles.price}>
 
-                <div>
-                    <p>Sipariş Toplamı</p>
-                    <p>Seçimler <span></span></p>
-                    <p>Toplam {pizza.totalPrice}</p>
-                </div>
+                <section className={styles.statContainer}>
+                    <div className={styles.stat}>
+                        <p>Sipariş Toplamı</p>
+                        <p>Seçimler <span>{priceForEachTopping * pizza.malzemeler.length}</span></p>
+                        <p>Toplam <span>{pizza.totalPrice}</span></p>
+                    </div>
+                </section>
 
-                <button disabled={pizza.boyut === "" || !(pizza.hamur === "ince" || pizza.hamur === "kalin") || pizza.malzemeler.length > 10} onClick={handleOrder}>SİPARİŞ VER</button>
+                <button
+                    disabled={pizza.boyut === "" || !(pizza.hamur === "ince" || pizza.hamur === "kalin") || pizza.malzemeler.length > 10} onClick={handleOrder}>SİPARİŞ VER</button>
 
             </div>
         </div>
