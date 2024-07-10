@@ -11,7 +11,7 @@ const PizzaBuilder = ({setPizza, route}) => {
 
     const handleSelect = (event) => {
 
-        if (event.target.value === "Hamur Kalınlığı")
+        if (event.target.value === "hamur-kalinligi")
             setPizza(pizza => ({...pizza, [event.target.name]: ""}));
 
         setPizza(pizza => ({...pizza, [event.target.name]: event.target.value}));
@@ -93,9 +93,9 @@ const PizzaBuilder = ({setPizza, route}) => {
                         </legend>
 
                         <Input type="select" name="hamur" id="hamur" onChange={handleSelect}>
-                            <option>Hamur Kalınlığı</option>
-                            <option>İnce</option>
-                            <option>Kalın</option>
+                            <option value="hamur-kalinligi">Hamur Kalınlığı</option>
+                            <option value="ince">İnce</option>
+                            <option value="kalin">Kalın</option>
                         </Input>
 
                     </Form>
