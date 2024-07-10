@@ -2,13 +2,15 @@ import styles from "./Description.module.css";
 
 const Description = () => {
     return (
-        <div>
-            <p>Position Absolute Acı Pizza</p>
+        <div className={styles.description}>
 
-            <div>
-                <span>85.50₺</span>
+            <p className={styles.title}>Position Absolute Acı Pizza</p>
 
-                <div>
+
+            <div className={styles.priceAndRating}>
+                <span className={styles.price}>85.50₺</span>
+
+                <div className={styles.rating}>
                     <span>4.9</span>
 
                     <span>(200)</span>
