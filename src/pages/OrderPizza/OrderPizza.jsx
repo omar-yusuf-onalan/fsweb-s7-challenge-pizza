@@ -20,15 +20,16 @@ const OrderPizza = () => {
     }
 
     const [pizza, setPizza] = useState(defaultPizza);
+    const [isValid, setIsValid] = useState(false);
 
     return (
         <div className={styles.orderPizza}>
             <Header />
 
             <div className={styles.pizzaBuilderAndTotalPrice}>
-                <PizzaBuilder setPizza={setPizza} route={orderPizzaRoute}/>
+                <PizzaBuilder pizza={pizza} setPizza={setPizza} route={orderPizzaRoute} setIsValid={setIsValid}/>
                 <Separator />
-                <TotalPrice pizza={pizza} setPizza={setPizza} route={orderPizzaRoute}/>
+                <TotalPrice pizza={pizza} setPizza={setPizza} route={orderPizzaRoute} isValid={isValid} />
             </div>
 
         </div>
