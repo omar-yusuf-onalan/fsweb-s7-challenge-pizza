@@ -1,8 +1,13 @@
 import styles from './TotalPrice.module.css';
 import axios from "axios";
+import {useEffect} from "react";
 
 const TotalPrice = ({pizza, setPizza, route}) => {
     const {pricesForSize, pricesForThickness, priceForEachTopping} = route;
+
+    useEffect(() => {
+        setPizza(pizza => ({...pizza, totalPrice: calculatePrice()}));
+    }, [pizza.boyut, pizza.hamur, pizza.malzemeler.length, pizza.adet]);
 
     const calculatePrice = () => {
         const basePrice = pizza.singularPrice;
@@ -44,7 +49,7 @@ const TotalPrice = ({pizza, setPizza, route}) => {
                 <div>
                     <p>Sipariş Toplamı</p>
                     <p>Seçimler <span></span></p>
-                    <p>Toplam {calculatePrice()}</p>
+                    <p>Toplam {pizza.totalPrice}</p>
                 </div>
 
                 <button disabled={pizza.boyut === "" || !(pizza.hamur === "ince" || pizza.hamur === "kalin") || pizza.malzemeler.length > 10} onClick={handleOrder}>SİPARİŞ VER</button>
