@@ -9,9 +9,7 @@
     height: 40vh;
 }
 
-.home img {
-    margin: 100px;
-}
+
 
 .home::before {
     content: '';
