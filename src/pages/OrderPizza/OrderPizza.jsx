@@ -8,7 +8,7 @@ import orderPizzaRoute from "../../templates/routes/orderPizzaRoute.js";
 const OrderPizza = () => {
 
     const defaultPizza = {
-        isim: "",
+        isim: "Position Absolute Acı Pizza",
         boyut: "",
         hamur: "",
         malzemeler: [],
@@ -23,7 +23,7 @@ const OrderPizza = () => {
         <div>
             <Header />
             <PizzaBuilder setPizza={setPizza} route={orderPizzaRoute}/>
-            <TotalPrice pizza={pizza} route={orderPizzaRoute}/>
+            <TotalPrice pizza={pizza} setPizza={setPizza} route={orderPizzaRoute}/>
         </div>
     )
 }
