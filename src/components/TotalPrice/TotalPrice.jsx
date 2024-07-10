@@ -1,6 +1,7 @@
 import styles from './TotalPrice.module.css';
+import axios from "axios";
 
-const TotalPrice = ({pizza, route}) => {
+const TotalPrice = ({pizza, setPizza, route}) => {
     const {pricesForSize, pricesForThickness, priceForEachTopping} = route;
 
     const calculatePrice = () => {
@@ -12,12 +13,30 @@ const TotalPrice = ({pizza, route}) => {
         return pizza.adet * (basePrice + priceOfToppings + sizePrice + thicknessPrice);
     }
 
+    const handleDecrement = () => {
+        const newNumberOfPizzas = pizza.adet - 1;
+
+        setPizza(pizza => ({...pizza, adet: newNumberOfPizzas}))
+    }
+
+    const handleIncrement = () => {
+        const newNumberOfPizzas = pizza.adet + 1;
+
+        setPizza(pizza => ({...pizza, adet: newNumberOfPizzas}))
+    }
+
+    const handleOrder = () => {
+        axios.post(`${import.meta.env.VITE_APP_BACK_END}/pizza`, pizza)
+            .then(response => console.log(response.data))
+            .catch(error => console.error(error));
+    }
+
     return (
         <div>
             <div>
-                <button>-</button>
+                <button disabled={pizza.adet === 1} onClick={handleDecrement}>-</button>
                 {pizza.adet}
-                <button>+</button>
+                <button onClick={handleIncrement}>+</button>
             </div>
 
             <div>
@@ -28,7 +47,7 @@ const TotalPrice = ({pizza, route}) => {
                     <p>Toplam {calculatePrice()}</p>
                 </div>
 
-                <button>SİPARİŞ VER</button>
+                <button disabled={pizza.boyut === "" || !(pizza.hamur === "ince" || pizza.hamur === "kalin") || pizza.malzemeler.length > 10} onClick={handleOrder}>SİPARİŞ VER</button>
 
             </div>
         </div>
