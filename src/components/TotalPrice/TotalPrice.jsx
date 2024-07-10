@@ -1,8 +1,11 @@
 import styles from './TotalPrice.module.css';
 import axios from "axios";
 import {useEffect} from "react";
+import {redirect, useNavigate} from "react-router-dom";
 
 const TotalPrice = ({pizza, setPizza, route, isValid}) => {
+    const navigate = useNavigate();
+
     const {pricesForSize, pricesForThickness, priceForEachTopping} = route;
 
     useEffect(() => {
@@ -32,7 +35,10 @@ const TotalPrice = ({pizza, setPizza, route, isValid}) => {
 
     const handleOrder = () => {
         axios.post(`${import.meta.env.VITE_APP_BACK_END}/pizza`, pizza)
-            .then(response => console.log(response.data))
+            .then(response => {
+                console.log(response.data)
+                navigate("/success");
+            })
             .catch(error => console.error(error));
     }
 
