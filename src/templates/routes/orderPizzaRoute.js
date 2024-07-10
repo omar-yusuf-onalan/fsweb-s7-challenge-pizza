@@ -12,6 +12,7 @@ const orderPizzaRoute = {
         ince: 20,
         kalin: 40
     },
+    minNumberOfToppings: 4,
     maxNumberOfToppings: 10,
     priceForEachTopping: 5,
     additionalToppings: [
