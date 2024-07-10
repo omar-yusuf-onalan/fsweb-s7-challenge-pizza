@@ -1,10 +1,43 @@
 import styles from './PizzaBuilder.module.css';
-import {Form, FormGroup, Input, Label} from "reactstrap";
+import {Form, FormFeedback, FormGroup, Input, Label} from "reactstrap";
 import Description from "../Description/Description.jsx";
+import {useEffect, useState} from "react";
 
-const PizzaBuilder = ({setPizza, route}) => {
+const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
 
-    const {pricesForSize, pricesForThickness, maxNumberOfToppings, priceForEachTopping, additionalToppings} = route;
+    const {minNumberOfToppings, maxNumberOfToppings, priceForEachTopping, additionalToppings} = route;
+
+    const errorMessages = {
+        boyut: "Bir boyut seçiniz",
+        hamur: "Hamur kalınlığını seçiniz",
+        malzemeler: `En az ${minNumberOfToppings} tane en fazla da ${maxNumberOfToppings} ek malzeme ekleyebilirsiniz`,
+        isim: "En az 3 karakter uzunluğunda olan isminizi giriniz",
+    }
+
+    const initialErrorState = {
+        boyut: true,
+        hamur: true,
+        malzemeler: true,
+        isim: true
+    }
+
+    const [areErrors, setAreErrors] = useState(initialErrorState);
+
+    useEffect(() => {
+        const boyutIsValid = pizza.boyut !== "";
+        const hamurIsValid = pizza.hamur !== "";
+        const malzemelerIsValid = minNumberOfToppings <= pizza.malzemeler.length && pizza.malzemeler.length <= maxNumberOfToppings;
+        const isimIsValid = pizza.isim.length >= 3;
+
+        setAreErrors({
+            boyut: !boyutIsValid,
+            hamur: !hamurIsValid,
+            malzemeler: !malzemelerIsValid,
+            isim: !isimIsValid
+        })
+
+        setIsValid(boyutIsValid && hamurIsValid && malzemelerIsValid && isimIsValid);
+    }, [pizza]);
 
     const handleRadio = (event) => {
         setPizza(pizza => ({...pizza, [event.target.name]: event.target.id}));
@@ -44,44 +77,71 @@ const PizzaBuilder = ({setPizza, route}) => {
 
                 <div className={`${styles.hundredPercentWidth} ${styles.doughAndThickness}`}>
 
-                    <Form >
-
-                        <legend>
-                            <span>Boyut Seç <span>*</span></span>
-                        </legend>
-
+                    <Form>
                         <FormGroup>
-                            <Input id="kucuk" name="boyut" type="radio" onChange={handleRadio}/>
-                            {' '}
-                            <Label check>Küçük</Label>
-                        </FormGroup>
+                            <legend>
+                                <span>Boyut Seç <span>*</span></span>
+                            </legend>
 
-                        <FormGroup>
-                            <Input id="orta" name="boyut" type="radio" onChange={handleRadio}/>
-                            {' '}
-                            <Label check>Orta</Label>
+                            <Input
+                                id="kucuk"
+                                name="boyut"
+                                type="radio"
+                                onChange={handleRadio}
+                                checked={pizza.boyut === "kucuk"}
+                            />
+                            {" "}
+                            <Label htmlFor="kucuk" check>Küçük</Label>
 
-                        </FormGroup>
+                            <br/>
 
-                        <FormGroup>
-                            <Input id="buyuk" name="boyut" type="radio" onChange={handleRadio}/>
-                            {' '}
-                            <Label check>Büyük</Label>
+                            <Input
+                                id="orta"
+                                name="boyut"
+                                type="radio"
+                                onChange={handleRadio}
+                                checked={pizza.boyut === "orta"}
+                            />
+                            {" "}
+                            <Label htmlFor="orta" check>Orta</Label>
+
+                            <br/>
+
+                            <Input
+                                id="buyuk"
+                                name="boyut"
+                                type="radio"
+                                onChange={handleRadio}
+                                checked={pizza.boyut === "buyuk"}
+                            />
+                            {""}
+                            <Label htmlFor="buyuk" check>Büyük</Label>
+
+                            {areErrors.boyut && <p>{errorMessages.boyut}</p>}
+
                         </FormGroup>
 
                     </Form>
 
                     <Form>
-                        <legend>
-                            <span>Hamur Seç <span>*</span></span>
-                        </legend>
 
-                        <Input type="select" name="hamur" id="hamur" onChange={handleSelect}>
-                            <option value="hamur-kalinligi">Hamur Kalınlığı</option>
-                            <option value="ince">İnce</option>
-                            <option value="kalin">Kalın</option>
-                        </Input>
+                        <FormGroup>
+                            <Label htmlFor="hamur"><span>Hamur Seç <span>*</span></span></Label>
+                            <Input
+                                type="select"
+                                name="hamur"
+                                id="hamur"
+                                onChange={handleSelect}
+                                value={pizza.hamur || "hamur-kalinligi"}
+                            >
+                                <option value="hamur-kalinligi">Hamur Kalınlığı</option>
+                                <option value="ince">İnce</option>
+                                <option value="kalin">Kalın</option>
+                            </Input>
 
+                            {areErrors.hamur && <p>{errorMessages.hamur}</p>}
+
+                        </FormGroup>
                     </Form>
                 </div>
 
@@ -92,11 +152,21 @@ const PizzaBuilder = ({setPizza, route}) => {
                         <p>En Fazla {maxNumberOfToppings} malzeme seçebilirsiniz. {priceForEachTopping}₺</p>
                     </div>
 
-                    <Form className={styles.toppingsWrap} onChange={handleCheckbox}>
+                    <Form
+                        className={styles.toppingsWrap}
+                        onChange={handleCheckbox}
+                    >
                         {additionalToppings.map(topping => {
                             return (
-                                <FormGroup key={topping} className={styles.formGroup}>
-                                    <Input type="checkbox" value={topping}/>
+                                <FormGroup
+                                    key={topping}
+                                    className={styles.formGroup}
+                                >
+                                    <Input
+                                        type="checkbox"
+                                        value={topping}
+                                        checked={pizza.malzemeler.includes(topping)}
+                                    />
                                     {" "}
                                     <Label>
                                         {topping}
@@ -104,6 +174,9 @@ const PizzaBuilder = ({setPizza, route}) => {
                                 </FormGroup>
                             )
                         })}
+
+                        {areErrors.malzemeler && <p>{errorMessages.malzemeler}</p>}
+
                     </Form>
                 </div>
 
@@ -113,15 +186,28 @@ const PizzaBuilder = ({setPizza, route}) => {
                         <Label>İsim</Label>
                         <br/>
                         <br/>
-                        <Input placeholder="Lütfen isminizi giriniz" name="isim" type="text" onChange={handleInput}/>
+                        <Input
+                            placeholder="Lütfen isminizi giriniz"
+                            name="isim"
+                            type="text"
+                            onChange={handleInput}
+                            value={pizza.isim}
+                        />
+
+                        {areErrors.isim && <p>{errorMessages.isim}</p>}
                     </Form>
                     <br/>
                     <Form>
                         <Label>Sipariş Notu</Label>
                         <br/>
                         <br/>
-                        <Input placeholder="Siparişine eklemek istediğin bir not var mı?" name="siparisNotu" type="text"
-                               onChange={handleInput}/>
+                        <Input
+                            placeholder="Siparişine eklemek istediğin bir not var mı?"
+                            name="siparisNotu"
+                            type="text"
+                            onChange={handleInput}
+                            value={pizza.siparisNotu}
+                        />
                     </Form>
 
                 </div>
