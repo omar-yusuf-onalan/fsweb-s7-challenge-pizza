@@ -32,6 +32,10 @@ const PizzaBuilder = ({setPizza, route}) => {
         })
     }
 
+    const handleInput = (event) => {
+        setPizza(pizza => ({...pizza, [event.target.name]: event.target.value}));
+    }
+
     return (
         <div>
             <p>Position Absolute Acı Pizza</p>
@@ -121,9 +125,15 @@ const PizzaBuilder = ({setPizza, route}) => {
             </div>
 
             <div>
+                <p>İsim</p>
+
+                <input type="text" name="isim" onChange={handleInput}/>
+            </div>
+
+            <div>
                 <p>Sipariş Notu</p>
 
-                <input type="text" onChange={(event) => setPizza(pizza => ({...pizza, siparisNotu: event.target.value}))}/>
+                <input type="text" name="siparisNotu" onChange={handleInput}/>
             </div>
         </div>
     )
