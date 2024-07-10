@@ -119,6 +119,12 @@ const PizzaBuilder = ({setPizza, route}) => {
                     })}
                 </Form>
             </div>
+
+            <div>
+                <p>Sipariş Notu</p>
+
+                <input type="text" onChange={(event) => setPizza(pizza => ({...pizza, siparisNotu: event.target.value}))}/>
+            </div>
         </div>
     )
 }
