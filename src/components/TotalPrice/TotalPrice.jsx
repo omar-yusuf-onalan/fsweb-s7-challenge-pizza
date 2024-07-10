@@ -1,6 +1,6 @@
 import styles from './TotalPrice.module.css';
 
-const TotalPrice = ({pizza}) => {
+const TotalPrice = ({pizza, route}) => {
     return (
         <div>
 

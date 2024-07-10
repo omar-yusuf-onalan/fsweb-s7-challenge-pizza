@@ -23,7 +23,7 @@ const OrderPizza = () => {
         <div>
             <Header />
             <PizzaBuilder setPizza={setPizza} route={orderPizzaRoute}/>
-            <TotalPrice pizza={pizza} />
+            <TotalPrice pizza={pizza} route={orderPizzaRoute}/>
         </div>
     )
 }
