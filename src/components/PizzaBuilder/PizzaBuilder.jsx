@@ -42,49 +42,46 @@ const PizzaBuilder = ({setPizza, route}) => {
             <Description />
 
             <div>
-                <div>
-                    <Form>
 
-                        <legend>
-                            <span>Boyut Seç <span>*</span></span>
-                        </legend>
+                <Form>
 
-                        <FormGroup>
-                            <Input id="kucuk" name="boyut" type="radio" onChange={handleRadio}/>
-                            {' '}
-                            <Label check>Küçük</Label>
-                        </FormGroup>
+                    <legend>
+                        <span>Boyut Seç <span>*</span></span>
+                    </legend>
 
-                        <FormGroup>
-                            <Input id="orta" name="boyut" type="radio" onChange={handleRadio}/>
-                            {' '}
-                            <Label check>Orta</Label>
+                    <FormGroup>
+                        <Input id="kucuk" name="boyut" type="radio" onChange={handleRadio}/>
+                        {' '}
+                        <Label check>Küçük</Label>
+                    </FormGroup>
 
-                        </FormGroup>
+                    <FormGroup>
+                        <Input id="orta" name="boyut" type="radio" onChange={handleRadio}/>
+                        {' '}
+                        <Label check>Orta</Label>
 
-                        <FormGroup>
-                            <Input id="buyuk" name="boyut" type="radio" onChange={handleRadio}/>
-                            {' '}
-                            <Label check>Büyük</Label>
-                        </FormGroup>
+                    </FormGroup>
 
-                    </Form>
-                </div>
+                    <FormGroup>
+                        <Input id="buyuk" name="boyut" type="radio" onChange={handleRadio}/>
+                        {' '}
+                        <Label check>Büyük</Label>
+                    </FormGroup>
 
-                <div>
-                    <Form>
-                        <legend>
-                        <span>Hamur Seç <span>*</span></span>
-                        </legend>
+                </Form>
 
-                        <Input type="select" name="hamur" id="hamur" onChange={handleSelect}>
-                            <option value="hamur-kalinligi">Hamur Kalınlığı</option>
-                            <option value="ince">İnce</option>
-                            <option value="kalin">Kalın</option>
-                        </Input>
+                <Form>
+                    <legend>
+                    <span>Hamur Seç <span>*</span></span>
+                    </legend>
 
-                    </Form>
-                </div>
+                    <Input type="select" name="hamur" id="hamur" onChange={handleSelect}>
+                        <option value="hamur-kalinligi">Hamur Kalınlığı</option>
+                        <option value="ince">İnce</option>
+                        <option value="kalin">Kalın</option>
+                    </Input>
+
+                </Form>
             </div>
 
             <div>
@@ -107,23 +104,18 @@ const PizzaBuilder = ({setPizza, route}) => {
                 </Form>
             </div>
 
-            <div>
+            <Form>
+                <Label>İsim</Label>
+                <br/>
+                <Input name="isim" type="text" onChange={handleInput}/>
+            </Form>
 
-                <FormGroup>
-                    <Label>İsim</Label>
-                    <br/>
-                    <Input name="isim" type="text" onChange={handleInput}/>
-                </FormGroup>
+            <Form>
+                <Label>Sipariş Notu</Label>
+                <br/>
+                <Input name="siparisNotu" type="text" onChange={handleInput}/>
+            </Form>
 
-            </div>
-
-            <div>
-                <FormGroup>
-                    <Label>Sipariş Notu</Label>
-                    <br/>
-                    <Input name="siparisNotu" type="text" onChange={handleInput}/>
-                </FormGroup>
-            </div>
         </div>
     )
 }
