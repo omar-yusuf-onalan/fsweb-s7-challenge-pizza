@@ -1,0 +1,60 @@
+.pizzaBuilder {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 25vw;
+}
+
+.gapsBetweenElements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hundredPercentWidth {
+    width: 100%;
+}
+
+.doughAndThickness {
+    display: flex;
+    justify-content: start;
+    gap: 200px;
+}
+
+.toppings {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.toppingsWrap {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.formGroup {
+    width: 150px;
+    height: 30px;
+}
+
+.inputs input {
+    width: 90%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #cccccc
+}
+
+.inputs input::placeholder {
+    padding-left: 10px;
+}
