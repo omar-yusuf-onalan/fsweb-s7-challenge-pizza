@@ -22,8 +22,15 @@
 
 .doughAndThickness {
     display: flex;
-    justify-content: start;
-    gap: 200px;
+    justify-content: space-between;
+}
+
+.sizeFormGroup {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .toppings {
@@ -57,4 +64,25 @@
 
 .inputs input::placeholder {
     padding-left: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+    .pizzaBuilder {
+        width: 80%;
+    }
+
+    .sizeFormGroup{
+        width: 150px;
+    }
+    .legend {
+        width: 100px;
+    }
+
+    .doughFormGroup {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        gap: 5px;
+    }
 }
