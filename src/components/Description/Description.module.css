@@ -29,3 +29,8 @@
     width: 5vw;
 }
 
+@media only screen and (max-width: 480px) {
+    .description {
+        width: 100%;
+    }
+}
