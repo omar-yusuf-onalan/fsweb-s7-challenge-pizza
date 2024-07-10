@@ -21,10 +21,14 @@ const OrderPizza = () => {
     const [pizza, setPizza] = useState(defaultPizza);
 
     return (
-        <div>
+        <div className={styles.orderPizza}>
             <Header />
-            <PizzaBuilder setPizza={setPizza} route={orderPizzaRoute}/>
-            <TotalPrice pizza={pizza} setPizza={setPizza} route={orderPizzaRoute}/>
+
+            <div className={styles.pizzaBuilderAndTotalPrice}>
+                <PizzaBuilder setPizza={setPizza} route={orderPizzaRoute}/>
+                <TotalPrice pizza={pizza} setPizza={setPizza} route={orderPizzaRoute}/>
+            </div>
+
         </div>
     )
 }
