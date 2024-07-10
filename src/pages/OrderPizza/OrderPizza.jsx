@@ -8,13 +8,14 @@ import orderPizzaRoute from "../../templates/routes/orderPizzaRoute.js";
 const OrderPizza = () => {
 
     const defaultPizza = {
-        isim: "Position Absolute Acı Pizza",
+        isim: "",
         boyut: "",
         hamur: "",
         malzemeler: [],
         siparisNotu: "",
         adet: 1,
-        singularPrice: 85.50
+        singularPrice: 85.50,
+        totalPrice: 85.50
     }
 
     const [pizza, setPizza] = useState(defaultPizza);
