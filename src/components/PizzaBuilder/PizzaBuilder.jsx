@@ -49,7 +49,7 @@ const PizzaBuilder = ({setPizza, route}) => {
                             <span>Boyut Seç <span>*</span></span>
                         </legend>
 
-                        <FormGroup check>
+                        <FormGroup>
                             <Input id="kucuk" name="boyut" type="radio" onChange={handleRadio}/>
                             {' '}
                             <Label check>Küçük</Label>
@@ -98,7 +98,7 @@ const PizzaBuilder = ({setPizza, route}) => {
                             <FormGroup key={topping} check>
                                 <Input type="checkbox" value={topping}/>
 
-                                <Label check>
+                                <Label>
                                     {topping}
                                 </Label>
                             </FormGroup>
@@ -108,15 +108,21 @@ const PizzaBuilder = ({setPizza, route}) => {
             </div>
 
             <div>
-                <p>İsim</p>
 
-                <input type="text" name="isim" onChange={handleInput}/>
+                <FormGroup>
+                    <Label>İsim</Label>
+                    <br/>
+                    <Input name="isim" type="text" onChange={handleInput}/>
+                </FormGroup>
+
             </div>
 
             <div>
-                <p>Sipariş Notu</p>
-
-                <input type="text" name="siparisNotu" onChange={handleInput}/>
+                <FormGroup>
+                    <Label>Sipariş Notu</Label>
+                    <br/>
+                    <Input name="siparisNotu" type="text" onChange={handleInput}/>
+                </FormGroup>
             </div>
         </div>
     )
