@@ -5,6 +5,7 @@ import PizzaBuilder from "../../components/PizzaBuilder/PizzaBuilder.jsx";
 import TotalPrice from "../../components/TotalPrice/TotalPrice.jsx";
 import orderPizzaRoute from "../../templates/routes/orderPizzaRoute.js";
 import Separator from "../../components/Separator/Separator.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 
 const OrderPizza = () => {
 
@@ -31,6 +32,8 @@ const OrderPizza = () => {
                 <Separator />
                 <TotalPrice pizza={pizza} setPizza={setPizza} route={orderPizzaRoute} isValid={isValid} />
             </div>
+
+            <Footer />
 
         </div>
     )
