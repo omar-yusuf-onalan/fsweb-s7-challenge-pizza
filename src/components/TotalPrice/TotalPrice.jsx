@@ -2,6 +2,7 @@ import styles from './TotalPrice.module.css';
 import axios from "axios";
 import {useEffect} from "react";
 import {redirect, useNavigate} from "react-router-dom";
+import PizzaPrice from "../PizzaPrice/PizzaPrice.jsx";
 
 const TotalPrice = ({pizza, setPizza, route, isValid}) => {
     const navigate = useNavigate();
@@ -53,13 +54,7 @@ const TotalPrice = ({pizza, setPizza, route, isValid}) => {
 
             <div className={styles.price}>
 
-                <section className={styles.statContainer}>
-                    <div className={styles.stat}>
-                        <p>Sipariş Toplamı</p>
-                        <p>Seçimler <span>{priceForEachTopping * pizza.malzemeler.length}</span></p>
-                        <p>Toplam <span>{pizza.totalPrice}</span></p>
-                    </div>
-                </section>
+                <PizzaPrice priceForEachTopping={priceForEachTopping} pizza={pizza} />
 
                 <button
                     disabled={!isValid} onClick={handleOrder}>SİPARİŞ VER</button>
