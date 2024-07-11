@@ -154,7 +154,6 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
 
                     <Form
                         className={styles.toppingsWrap}
-                        onChange={handleCheckbox}
                     >
                         {additionalToppings.map(topping => {
                             return (
@@ -167,6 +166,7 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                                         id={topping}
                                         value={topping}
                                         checked={pizza.malzemeler.includes(topping)}
+                                        onChange={handleCheckbox}
                                     />
                                     {" "}
                                     <Label htmlFor={topping}>
