@@ -33,6 +33,14 @@
     gap: 5px;
 }
 
+.doughFormGroup {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .toppings {
     display: flex;
     justify-content: center;
@@ -78,11 +86,5 @@
         width: 100px;
     }
 
-    .doughFormGroup {
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        flex-direction: column;
-        gap: 5px;
-    }
+
 }
