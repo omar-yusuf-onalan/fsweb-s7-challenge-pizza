@@ -7,20 +7,8 @@ import orderPizzaRoute from "../../templates/routes/orderPizzaRoute.js";
 import Separator from "../../components/Separator/Separator.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
-const OrderPizza = () => {
+const OrderPizza = ({pizza, setPizza}) => {
 
-    const defaultPizza = {
-        isim: "",
-        boyut: "",
-        hamur: "",
-        malzemeler: [],
-        siparisNotu: "",
-        adet: 1,
-        singularPrice: 85.50,
-        totalPrice: 85.50
-    }
-
-    const [pizza, setPizza] = useState(defaultPizza);
     const [isValid, setIsValid] = useState(false);
 
     return (
