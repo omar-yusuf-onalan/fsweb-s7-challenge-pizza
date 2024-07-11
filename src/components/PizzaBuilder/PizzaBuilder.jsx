@@ -1,11 +1,12 @@
 import styles from './PizzaBuilder.module.css';
-import {Form, FormFeedback, FormGroup, Input, Label} from "reactstrap";
+import {Form, FormGroup, Input, Label} from "reactstrap";
 import Description from "../Description/Description.jsx";
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
 
-    const {minNumberOfToppings, maxNumberOfToppings, priceForEachTopping, additionalToppings} = route;
+    const {minNumberOfToppings, maxNumberOfToppings, additionalToppings} = route;
 
     const errorMessages = {
         boyut: "Bir boyut seçiniz",
@@ -72,8 +73,24 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
 
     return (
         <div className={styles.pizzaBuilder}>
+
+            <img src="../../../Assets/mile2-aseets/pictures/form-banner.png" alt="pizza"/>
+
             <div className={styles.gapsBetweenElements}>
-                <Description />
+
+                <div className={styles.links}>
+                    <Link className={styles.link} to="/">Anasayfa</Link>
+                    {" "}
+                    -
+                    {" "}
+                    <Link className={styles.link} to="/">Seçenekler</Link>
+                    {" "}
+                    -
+                    {" "}
+                    <Link className={styles.link} to="order-pizza">Sipariş Oluştur</Link>
+                </div>
+
+                <Description/>
 
                 <div className={`${styles.hundredPercentWidth} ${styles.doughAndThickness}`}>
 
@@ -83,44 +100,49 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                                 <span>Boyut Seç <span>*</span></span>
                             </legend>
 
-                            <FormGroup>
-                                <Input
-                                    id="kucuk"
-                                    name="boyut"
-                                    type="radio"
-                                    onChange={handleRadio}
-                                    checked={pizza.boyut === "kucuk"}
-                                />
-                                {" "}
-                                <Label htmlFor="kucuk" check>Küçük</Label>
-                            </FormGroup>
+                            <div className={styles.sizeFormGroupDiv}>
+                                <FormGroup>
+                                    <Input
+                                        id="kucuk"
+                                        name="boyut"
+                                        type="radio"
+                                        onChange={handleRadio}
+                                        checked={pizza.boyut === "kucuk"}
+                                        hidden={true}
+                                    />
+                                    {" "}
+                                    <Label htmlFor="kucuk" check><div className={`${styles.radioLabel} ${pizza.boyut === "kucuk" ? styles.yellowBackground : ""}`}>S</div></Label>
+                                </FormGroup>
 
-                            <FormGroup>
-                                <Input
-                                    id="orta"
-                                    name="boyut"
-                                    type="radio"
-                                    onChange={handleRadio}
-                                    checked={pizza.boyut === "orta"}
-                                />
-                                {" "}
-                                <Label htmlFor="orta" check>Orta</Label>
-                            </FormGroup>
+                                <FormGroup>
+                                    <Input
+                                        id="orta"
+                                        name="boyut"
+                                        type="radio"
+                                        onChange={handleRadio}
+                                        checked={pizza.boyut === "orta"}
+                                        hidden={true}
+                                    />
+                                    {" "}
+                                    <Label htmlFor="orta" check><div className={`${styles.radioLabel} ${pizza.boyut === "orta" ? styles.yellowBackground : ""}`}>M</div></Label>
+                                </FormGroup>
 
 
-                            <FormGroup>
-                                <Input
-                                    id="buyuk"
-                                    name="boyut"
-                                    type="radio"
-                                    onChange={handleRadio}
-                                    checked={pizza.boyut === "buyuk"}
-                                />
-                                {""}
-                                <Label htmlFor="buyuk" check>Büyük</Label>
-                            </FormGroup>
+                                <FormGroup>
+                                    <Input
+                                        id="buyuk"
+                                        name="boyut"
+                                        type="radio"
+                                        onChange={handleRadio}
+                                        checked={pizza.boyut === "buyuk"}
+                                        hidden={true}
+                                    />
+                                    {""}
+                                    <Label htmlFor="buyuk" check><div className={`${styles.radioLabel} ${pizza.boyut === "buyuk" ? styles.yellowBackground : ""}`}>L</div></Label>
+                                </FormGroup>
+                            </div>
 
-                            {areErrors.boyut && <p className={styles.errorMessages}>{errorMessages.boyut}</p>}
+                            {areErrors.boyut && <p>{errorMessages.boyut}</p>}
 
                         </FormGroup>
 
@@ -131,11 +153,13 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                         <FormGroup className={styles.doughFormGroup}>
                             <Label htmlFor="hamur"><span>Hamur Seç <span>*</span></span></Label>
                             <Input
+                                className={styles.doughInput}
                                 type="select"
                                 name="hamur"
                                 id="hamur"
                                 onChange={handleSelect}
                                 value={pizza.hamur || "hamur-kalinligi"}
+
                             >
                                 <option value="hamur-kalinligi">Hamur Kalınlığı</option>
                                 <option value="ince">İnce</option>
@@ -167,9 +191,11 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                                         value={topping}
                                         checked={pizza.malzemeler.includes(topping)}
                                         onChange={handleCheckbox}
+                                        hidden={true}
                                     />
                                     {" "}
-                                    <Label htmlFor={topping}>
+                                    <Label className={styles.toppingLabel} htmlFor={topping}>
+                                        <div className={`${styles.toppingDiv} ${pizza.malzemeler.includes(topping) ? styles.yellowBackground : ""}`}>{pizza.malzemeler.includes(topping) ? <span>✔</span> : <span></span>}</div>
                                         {topping}
                                     </Label>
                                 </FormGroup>
