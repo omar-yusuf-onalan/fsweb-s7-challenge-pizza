@@ -1,0 +1,22 @@
+.productContainer {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.productDetails {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.productStats {
+    width: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 100px;
+}
