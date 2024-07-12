@@ -81,7 +81,7 @@ const Home = () => {
                 <div className={styles.foodTypes}>
                     {foodTypes.map(type => {
                         return (
-                            <div className={styles.foodType}>
+                            <div key={type.name} className={styles.foodType}>
                                 <img src={type.img} alt={type.name}/>
                                 <span>{type.name}</span>
                             </div>
@@ -133,8 +133,8 @@ const Home = () => {
 
                         {foodTypes.map(category => {
                             return (
-                                <Button>
-                                    <div key={category.name} className={styles.foodType}>
+                                <Button key={category.name}>
+                                    <div className={styles.foodType}>
                                         <img src={category.img} alt={category.name}/>
                                         <span>{category.name}</span>
                                     </div>
