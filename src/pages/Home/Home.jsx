@@ -95,8 +95,8 @@ const Home = () => {
                         <div className={styles.writtenContent}>
 
                             <div className={styles.writtenContentStart}>
-                                <p>Özel</p>
-                                <p>Lezzetus</p>
+                                <p className={styles.twoRem}>Özel</p>
+                                <p className={styles.twoRem}>Lezzetus</p>
                                 <p>Position: Absolute Acı Burger</p>
                                 <Button>SİPARİŞ VER</Button>
                             </div>
@@ -107,8 +107,8 @@ const Home = () => {
                     <div className={styles.hackathlonAndNpm}>
                         <div className={styles.hackathlon}>
                             <div className={styles.hackathlonStart}>
-                                <p>Hackathlon</p>
-                                <p>Burger Menü</p>
+                                <p className={styles.twoRem}>Hackathlon</p>
+                                <p className={styles.twoRem}>Burger Menü</p>
 
                                 <Button>SİPARİŞ VER</Button>
                             </div>
@@ -116,8 +116,8 @@ const Home = () => {
 
                         <div className={styles.npm}>
                             <div className={styles.npmStart}>
-                                <p><span>Çoooook</span> hızlı</p>
-                                <p>npm gibi kurye</p>
+                                <p className={styles.twoRem}><span>Çoooook</span> hızlı</p>
+                                <p className={styles.twoRem}>npm gibi kurye</p>
 
                                 <Button>SİPARİŞ VER</Button>
                             </div>

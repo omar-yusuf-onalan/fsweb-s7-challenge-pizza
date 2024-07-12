@@ -17,20 +17,17 @@ const Success = ({pizza}) => {
 
             <div className={styles.orderDetails}>
 
-
-
-                    <p>Position Absolute Acı Pizza</p>
+                    <p className={styles.twoRem}>Position Absolute Acı Pizza</p>
 
                     <div className={styles.pizzaDetails}>
-                        <p>Boyut: {pizza.boyut}</p>
-                        <p>Hamur: {pizza.hamur}</p>
-                        <p>Ek Malzemeler: {pizza.malzemeler.join(", ")}</p>
+                        <p><span className={styles.bej}>Boyut:</span> {pizza.boyut}</p>
+                        <p><span className={styles.bej}>Hamur:</span> {pizza.hamur}</p>
+                        <p><span className={styles.bej}>Ek Malzemeler:</span> {pizza.malzemeler.join(", ")}</p>
                     </div>
 
                     <div>
                         <PizzaPrice pizza={pizza} priceForEachTopping={orderPizzaRoute.priceForEachTopping}/>
                     </div>
-
 
             </div>
 

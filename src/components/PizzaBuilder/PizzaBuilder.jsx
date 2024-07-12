@@ -142,7 +142,7 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                                 </FormGroup>
                             </div>
 
-                            {areErrors.boyut && <p>{errorMessages.boyut}</p>}
+                            {areErrors.boyut && <p className={styles.errorMessage}>{errorMessages.boyut}</p>}
 
                         </FormGroup>
 
@@ -166,7 +166,7 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                                 <option value="kalin">Kalın</option>
                             </Input>
 
-                            {areErrors.hamur && <p>{errorMessages.hamur}</p>}
+                            {areErrors.hamur && <p className={styles.errorMessage}>{errorMessages.hamur}</p>}
 
                         </FormGroup>
                     </Form>
@@ -202,7 +202,7 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                             )
                         })}
 
-                        {areErrors.malzemeler && <p>{errorMessages.malzemeler}</p>}
+                        {areErrors.malzemeler && <p className={styles.errorMessage}>{errorMessages.malzemeler}</p>}
 
                     </Form>
                 </div>
@@ -221,7 +221,7 @@ const PizzaBuilder = ({pizza, setPizza, route, setIsValid}) => {
                             value={pizza.isim}
                         />
 
-                        {areErrors.isim && <p>{errorMessages.isim}</p>}
+                        {areErrors.isim && <p className={styles.errorMessage}>{errorMessages.isim}</p>}
                     </Form>
                     <br/>
                     <Form>

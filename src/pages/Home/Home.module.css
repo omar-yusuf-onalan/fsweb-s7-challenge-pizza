@@ -115,6 +115,10 @@
     gap: 20px;
 }
 
+.twoRem {
+    font-size: 2rem;
+}
+
 .hackathlonAndNpm {
     display: flex;
     justify-content: center;
@@ -148,8 +152,8 @@
     flex-direction: column;
     gap: 20px;
 
-    margin-left: 30px;
-    margin-top: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
 .npm {
@@ -173,8 +177,12 @@
     flex-direction: column;
     gap: 20px;
 
-    margin-left: 30px;
-    margin-top: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.npmStart p span {
+    color: #CE2829;
 }
 
 .categoriesAndProducts {

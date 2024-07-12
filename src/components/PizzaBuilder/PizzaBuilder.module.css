@@ -59,6 +59,11 @@
     align-items: center;
 }
 
+.errorMessage {
+    color: #CE2829;
+    font-weight: bold;
+}
+
 .sizeFormGroupDiv {
     display: flex;
     justify-content: center;

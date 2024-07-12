@@ -17,7 +17,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    gap: 100px;
+    gap: 50px;
 }
 
 .pizzaDetails {
@@ -41,7 +41,6 @@
     flex-direction: column;
 
     font-size: 3rem;
-    color: white;
     font-family: Barlow;
 
 }
@@ -50,6 +49,14 @@
     height: 1px;
     background-color: white;
     width: 30%;
+}
+
+.twoRem {
+    font-size: 2rem;
+}
+
+.bej {
+    color: #FAF7F2;
 }
 
 @media only screen and (max-width: 480px) {

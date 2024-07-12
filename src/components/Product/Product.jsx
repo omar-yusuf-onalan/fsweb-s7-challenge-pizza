@@ -3,7 +3,8 @@ import styles from "./Product.module.css";
 const {
     productContainer,
     productDetails,
-    productStats
+    productStats,
+    bold
 } = styles;
 
 
@@ -17,7 +18,7 @@ const Product = ({product}) => {
 
             <div className={productDetails}>
 
-                <p>
+                <p className={bold}>
                     {name}
                 </p>
 
@@ -26,7 +27,7 @@ const Product = ({product}) => {
 
                     <span>({numberOfRatings})</span>
 
-                    <span>{price}₺</span>
+                    <span className={bold}>{price}₺</span>
                 </div>
 
             </div>
